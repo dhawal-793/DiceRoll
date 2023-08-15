@@ -32,11 +32,11 @@ const Dice = ({ imageUrl }: DiceProps): JSX.Element => {
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView>
-      <Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.heading}>
         Dice Roll
       </Text>
-      <View>
+      <View style={styles.diceContainer}>
         <Dice imageUrl={dice1} />
       </View>
     </SafeAreaView>
@@ -44,10 +44,43 @@ function App(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: '#FFF2F2',
+  },
+  heading: {
+    color: '#8EA7E9',
+    fontSize: 50,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 80,
+  },
+  diceContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: 'center',
+  },
   diceImage: {
     width: 200,
     height: 200,
-  }
+  },
+  button: {
+    width: 180,
+    marginTop: 50,
+    marginHorizontal: 'auto',
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: '#8EA7E9',
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#8EA7E9',
+  },
 })
 
 export default App;
