@@ -1,7 +1,8 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import {
   Image,
   ImageSourcePropType,
+  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -31,13 +32,40 @@ const Dice = ({ imageUrl }: DiceProps): JSX.Element => {
 
 
 function App(): JSX.Element {
+
+  const [diceImage, setDiceImage] = useState<ImageSourcePropType>(dice1)
+
+  const rollTheDice = () => {
+    const diceNumber = Math.floor(Math.random() * 6) + 1
+
+    switch (diceNumber) {
+      case 1: setDiceImage(dice1);
+        break;
+      case 2: setDiceImage(dice2);
+        break;
+      case 3: setDiceImage(dice3);
+        break;
+      case 4: setDiceImage(dice4);
+        break;
+      case 5: setDiceImage(dice5);
+        break;
+      case 6: setDiceImage(dice6);
+        break;
+      default: setDiceImage(dice1);
+    }
+
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>
         Dice Roll
       </Text>
       <View style={styles.diceContainer}>
-        <Dice imageUrl={dice1} />
+        <Dice imageUrl={diceImage} />
+        <Pressable onPress={rollTheDice} style={styles.button}>
+          <Text style={styles.buttonText}>Roll</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
