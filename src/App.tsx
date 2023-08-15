@@ -9,12 +9,21 @@ import {
   View,
 } from 'react-native';
 
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+
+
 import dice1 from './assets/Dice1.png'
 import dice2 from './assets/Dice2.png'
 import dice3 from './assets/Dice3.png'
 import dice4 from './assets/Dice4.png'
 import dice5 from './assets/Dice5.png'
 import dice6 from './assets/Dice6.png'
+
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 
 
 type DiceProps = PropsWithChildren<{
@@ -36,6 +45,7 @@ function App(): JSX.Element {
   const [diceImage, setDiceImage] = useState<ImageSourcePropType>(dice1)
 
   const rollTheDice = () => {
+    ReactNativeHapticFeedback.trigger("impactLight", options);
     const diceNumber = Math.floor(Math.random() * 6) + 1
 
     switch (diceNumber) {
